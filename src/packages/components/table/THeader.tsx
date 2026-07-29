@@ -1,45 +1,31 @@
 'use client';
 
 import Table from '@mui/material/Table';
-import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { flexRender } from '@tanstack/react-table';
 import { useGrid } from '../../contexts/GridContext';
+import THead from './THead';
 
 const THeader = () => {
-  const { table } = useGrid();
+  const { table, isSplit } = useGrid();
+
   return (
     <Table
       size="small"
-      sx={(theme) => ({
-        '& .MuiTableCell-root': {
-          border: `1px solid ${theme.palette.divider}`,
-        },
-      })}
+      // sx={(theme) => ({
+      //   '& .MuiTableCell-root': {
+      //     border: `1px solid ${theme.palette.divider}`,
+      //   },
+      // })}
     >
       <TableHead>
-        {table.getHeaderGroups().map((headerGroup) => (
+        {(isSplit
+          ? table.getCenterHeaderGroups()
+          : table.getHeaderGroups()
+        ).map((headerGroup) => (
           <TableRow key={headerGroup.id}>
             {headerGroup.headers.map((header) => (
-              <TableCell
-                key={header.id}
-                style={{
-                  width: header.getSize(),
-                  minWidth: header.getSize(),
-                  maxWidth: header.getSize(),
-                  overflow: 'hidden',
-                  whiteSpace: 'nowrap',
-                  textOverflow: 'ellipsis',
-                }}
-              >
-                {header.isPlaceholder
-                  ? null
-                  : flexRender(
-                      header.column.columnDef.header,
-                      header.getContext(),
-                    )}
-              </TableCell>
+              <THead header={header} key={header.id} />
             ))}
           </TableRow>
         ))}

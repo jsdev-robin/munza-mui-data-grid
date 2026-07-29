@@ -8,7 +8,7 @@ import TBody from './TBody';
 import THeader from './THeader';
 
 const TMain = () => {
-  const { paneRef1, paneRef2, height } = useGrid();
+  const { paneRef1, paneRef2, height, table } = useGrid();
 
   return (
     <Paper>
@@ -32,16 +32,16 @@ const TMain = () => {
         <TBody />
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
+        rowsPerPageOptions={[20, 30, 40, 50, 60, 70, 80, 90, 100]}
         component="div"
-        count={10}
-        rowsPerPage={10}
-        page={10}
-        onPageChange={() => {
-          console.log('ok');
+        count={table.getRowCount()}
+        rowsPerPage={table.getState().pagination.pageSize}
+        page={table.getState().pagination.pageIndex}
+        onPageChange={(_event, newPage) => {
+          table.setPageIndex(newPage);
         }}
-        onRowsPerPageChange={() => {
-          console.log('ok');
+        onRowsPerPageChange={(event) => {
+          table.setPageSize(Number(event.target.value));
         }}
       />
     </Paper>

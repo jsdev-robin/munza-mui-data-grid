@@ -293,6 +293,8 @@ const App = () => {
 
   const { state, handlers } = useGridState();
 
+  console.log(state.pagination);
+
   return (
     <section
       style={{
@@ -302,7 +304,7 @@ const App = () => {
       <Grid
         payload={{
           data: dummyVehicles,
-          total: 0,
+          total: 1000,
         }}
         columns={columns}
         isLoading={false}

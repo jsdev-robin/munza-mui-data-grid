@@ -12,11 +12,11 @@ const TBody = () => {
   return (
     <Table
       size="small"
-      sx={(theme) => ({
-        '& .MuiTableCell-root': {
-          border: `1px solid ${theme.palette.divider}`,
-        },
-      })}
+      // sx={(theme) => ({
+      //   '& .MuiTableCell-root': {
+      //     border: `1px solid ${theme.palette.divider}`,
+      //   },
+      // })}
     >
       <TableBody>
         {table.getRowModel().rows.map((row) => (
