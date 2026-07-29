@@ -1,19 +1,8 @@
-import Paper from '@mui/material/Paper';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
-import {
-  flexRender,
-  getCoreRowModel,
-  useReactTable,
-  type ColumnDef,
-} from '@tanstack/react-table';
+import { type ColumnDef } from '@tanstack/react-table';
 import { useMemo } from 'react';
 import { dummyVehicles, type Vehicle } from './data/dummyData';
+import { Grid } from './packages/core';
+import { useGridState } from './packages/hooks/useGridState';
 
 const App = () => {
   const columns = useMemo<ColumnDef<Vehicle, unknown>[]>(
@@ -302,11 +291,7 @@ const App = () => {
     [],
   );
 
-  const table = useReactTable({
-    data: dummyVehicles.slice(0, 10),
-    columns,
-    getCoreRowModel: getCoreRowModel(),
-  });
+  const { state, handlers } = useGridState();
 
   return (
     <section
@@ -314,82 +299,19 @@ const App = () => {
         padding: 10,
       }}
     >
-      <Paper>
-        <TableContainer component={Paper}>
-          <Table
-            size="small"
-            sx={(theme) => ({
-              '& .MuiTableCell-root': {
-                border: `1px solid ${theme.palette.divider}`,
-              },
-            })}
-          >
-            <TableHead>
-              {table.getHeaderGroups().map((headerGroup) => (
-                <TableRow key={headerGroup.id}>
-                  {headerGroup.headers.map((header) => (
-                    <TableCell
-                      key={header.id}
-                      style={{
-                        width: header.getSize(),
-                        minWidth: header.getSize(),
-                        maxWidth: header.getSize(),
-                        overflow: 'hidden',
-                        whiteSpace: 'nowrap',
-                        textOverflow: 'ellipsis',
-                      }}
-                    >
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext(),
-                          )}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))}
-            </TableHead>
-            <TableBody>
-              {table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id}>
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell
-                      key={cell.id}
-                      style={{
-                        width: cell.column.getSize(),
-                        minWidth: cell.column.getSize(),
-                        maxWidth: cell.column.getSize(),
-                        overflow: 'hidden',
-                        whiteSpace: 'nowrap',
-                        textOverflow: 'ellipsis',
-                      }}
-                    >
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext(),
-                      )}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[10, 25, 100]}
-          component="div"
-          count={10}
-          rowsPerPage={10}
-          page={10}
-          onPageChange={() => {
-            console.log('ok');
-          }}
-          onRowsPerPageChange={() => {
-            console.log('ok');
-          }}
-        />
-      </Paper>
+      <Grid
+        payload={{
+          data: dummyVehicles.slice(0, 10),
+          total: 0,
+        }}
+        columns={columns}
+        isLoading={false}
+        isError={false}
+        manualPagination={true}
+        state={state}
+        {...handlers}
+        height="60vh"
+      />
     </section>
   );
 };
