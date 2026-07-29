@@ -62,8 +62,34 @@ const GridInner = ({}: {
   isPagination?: boolean;
 }) => {
   return (
-    <Box>
-      <TMain />
+    <Box
+      sx={{
+        position: 'relative',
+      }}
+    >
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'flex-start',
+          bgcolor: 'action.hover',
+          borderRadius: 1,
+          overflow: 'hidden',
+          border: 1,
+          borderColor: 'divider',
+          width: '100%',
+        }}
+      >
+        <Box
+          sx={{
+            overflow: 'hidden',
+            flex: 1,
+          }}
+        >
+          <TMain />
+        </Box>
+
+        <Box>To</Box>
+      </Box>
     </Box>
   );
 };

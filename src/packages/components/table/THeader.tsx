@@ -12,11 +12,11 @@ const THeader = () => {
   return (
     <Table
       size="small"
-      // sx={(theme) => ({
-      //   '& .MuiTableCell-root': {
-      //     border: `1px solid ${theme.palette.divider}`,
-      //   },
-      // })}
+      sx={(theme) => ({
+        '& .MuiTableCell-root': {
+          border: `1px solid ${theme.palette.divider}`,
+        },
+      })}
     >
       <TableHead>
         {(isSplit
