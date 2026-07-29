@@ -39,7 +39,7 @@ const THead = <T,>({ header }: THeadProps<T>) => {
           : flexRender(header.column.columnDef.header, header.getContext())}
         <TextField
           size="small"
-          type="search"
+          type="date"
           sx={{
             '& .MuiOutlinedInput-root': {
               height: 28,
