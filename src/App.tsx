@@ -301,7 +301,7 @@ const App = () => {
     >
       <Grid
         payload={{
-          data: dummyVehicles.slice(0, 10),
+          data: dummyVehicles,
           total: 0,
         }}
         columns={columns}
