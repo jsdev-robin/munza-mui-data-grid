@@ -1,6 +1,7 @@
 'use client';
 
 import Box from '@mui/material/Box';
+import { alpha } from '@mui/material/styles';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import TLeftMain from '../components/table/TLeftMain';
 import TMain from '../components/table/TMain';
@@ -106,7 +107,7 @@ const GridInner = ({
       }}
     >
       <Box
-        sx={{
+        sx={(theme) => ({
           display: 'flex',
           alignItems: 'flex-start',
           bgcolor: 'action.hover',
@@ -115,7 +116,8 @@ const GridInner = ({
           border: 1,
           borderColor: 'divider',
           width: '100%',
-        }}
+          background: alpha(theme.palette.divider, 0.05),
+        })}
       >
         <TLeftMain />
         <Box

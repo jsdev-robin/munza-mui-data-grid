@@ -38,6 +38,7 @@ const TLeftMain = () => {
               width: '100%',
               height: height,
               overflowX: 'scroll',
+              // scrollbarColor: 'transparent transparent',
             }}
           >
             <TLeftBody />
