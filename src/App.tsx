@@ -31,7 +31,7 @@ const App = () => {
             onChange={table.getToggleAllRowsSelectedHandler()}
             size="small"
             disableRipple
-            sx={{ padding: 0, ml: 0.5 }}
+            sx={{ padding: 0, ml: 0.4 }}
           />
         ),
         cell: ({ row }) => (
@@ -371,7 +371,7 @@ const App = () => {
         manualPagination={true}
         state={state}
         {...handlers}
-        height="60vh"
+        height="55vh"
         topRightSlot={<div>Custom Action Button</div>}
       />
     </section>
