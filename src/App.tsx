@@ -372,7 +372,7 @@ const App = () => {
         state={state}
         {...handlers}
         height="60vh"
-        topRightSlot={<div>Hello</div>}
+        topRightSlot={<div>Custom Action Button</div>}
       />
     </section>
   );
