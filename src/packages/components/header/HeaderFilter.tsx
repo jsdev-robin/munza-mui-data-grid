@@ -8,6 +8,7 @@ import DebouncedInput from '../../../components/ui/debounced-input';
 import { useGrid } from '../../contexts/GridContext';
 
 const HeaderFilter = <T,>({ column }: { column: Column<T, unknown> }) => {
+  'use no memo';
   const columnFilterValue = column.getFilterValue();
   const { filterVariant } = column.columnDef.meta ?? {};
   const { isFetching } = useGrid();
@@ -20,14 +21,14 @@ const HeaderFilter = <T,>({ column }: { column: Column<T, unknown> }) => {
   return column.getCanFilter() ? (
     <Box
       sx={{
-        p: 0.75,
+        p: 0.5,
         borderTop: 1,
         borderColor: 'divider',
         width: '100%',
       }}
     >
       {filterVariant === 'range' ? (
-        <Box sx={{ display: 'flex', gap: 0.75 }}>
+        <Box sx={{ display: 'flex', gap: 0.5 }}>
           <DebouncedInput
             type="number"
             value={(columnFilterValue as [number, number])?.[0] ?? ''}
@@ -48,6 +49,7 @@ const HeaderFilter = <T,>({ column }: { column: Column<T, unknown> }) => {
                 fontSize: 13,
               },
             }}
+            fullWidth
           />
           <DebouncedInput
             type="number"
@@ -69,6 +71,7 @@ const HeaderFilter = <T,>({ column }: { column: Column<T, unknown> }) => {
                 fontSize: 13,
               },
             }}
+            fullWidth
           />
         </Box>
       ) : filterVariant === 'select' ? (
@@ -126,6 +129,7 @@ const HeaderFilter = <T,>({ column }: { column: Column<T, unknown> }) => {
               fontSize: 13,
             },
           }}
+          fullWidth
         />
       ) : (
         <Box sx={{ height: 32, opacity: 0, visibility: 'hidden' }} />

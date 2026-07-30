@@ -47,11 +47,11 @@ const THead = <T,>({ header }: THeadProps<T>) => {
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           <Box
             sx={{
-              p: 0.75,
+              p: 0.5,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              gap: 1.5,
+              gap: 1,
             }}
           >
             <HeaderSort header={header} />

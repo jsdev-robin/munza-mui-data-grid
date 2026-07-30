@@ -20,6 +20,7 @@ import { useState, type MouseEvent } from 'react';
 import { useGrid } from '../../contexts/GridContext';
 
 const HeaderMenu = <T,>({ header }: { header: Header<T, unknown> }) => {
+  'use no memo';
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const { isLoading, isError } = useGrid();

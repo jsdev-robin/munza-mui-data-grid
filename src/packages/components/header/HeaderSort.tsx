@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import { flexRender, type Header } from '@tanstack/react-table';
 
 const HeaderSort = <T,>({ header }: { header: Header<T, unknown> }) => {
+  'use no memo';
   return (
     <Box
       onClick={header.column.getToggleSortingHandler()}

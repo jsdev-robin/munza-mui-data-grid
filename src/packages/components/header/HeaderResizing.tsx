@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import { type Header } from '@tanstack/react-table';
 
 const HeaderResizing = <T,>({ header }: { header: Header<T, unknown> }) => {
+  'use no memo';
   const isResizing = header.column.getIsResizing();
 
   return (
