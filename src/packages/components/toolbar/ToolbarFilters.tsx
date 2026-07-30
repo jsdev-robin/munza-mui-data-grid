@@ -140,7 +140,12 @@ const ToolbarFilters = () => {
         {table.getHeaderGroups().map((headerGroup) => (
           <React.Fragment key={headerGroup.id}>
             {headerGroup.headers
-              .filter((header) => !['rowNumber'].includes(header.column.id))
+              .filter(
+                (header) =>
+                  !['rowNumber', 'select', 'pin', 'actions'].includes(
+                    header.column.id,
+                  ),
+              )
               .map((header) => (
                 <ToolbarFilter key={header.id} column={header.column} />
               ))}
