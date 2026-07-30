@@ -15,7 +15,14 @@ const TMain = () => {
 
   return (
     <Paper>
-      <Toolbar>
+      <Toolbar
+        sx={[
+          {
+            pl: { sm: 2 },
+            pr: { xs: 1, sm: 1 },
+          },
+        ]}
+      >
         <TextField size="small" />
       </Toolbar>
       <TableContainer
