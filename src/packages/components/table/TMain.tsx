@@ -13,8 +13,15 @@ import THeader from './THeader';
 
 const TMain = ({ topRightSlot }: { topRightSlot?: React.ReactNode }) => {
   'use no memo';
-  const { paneRef1, paneRef2, height, table, setGlobalFilter, globalFilter } =
-    useGrid();
+  const {
+    paneRef1,
+    paneRef2,
+    height,
+    table,
+    setGlobalFilter,
+    globalFilter,
+    isSplit,
+  } = useGrid();
 
   return (
     <Paper>
@@ -49,6 +56,14 @@ const TMain = ({ topRightSlot }: { topRightSlot?: React.ReactNode }) => {
           overflowX: 'hidden',
           scrollbarColor: 'transparent transparent',
         }}
+        sx={
+          isSplit
+            ? {
+                borderLeft: '1px solid',
+                borderColor: 'divider',
+              }
+            : {}
+        }
         ref={paneRef1}
       >
         <THeader />

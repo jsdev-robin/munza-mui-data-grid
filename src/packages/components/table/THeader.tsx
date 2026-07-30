@@ -22,7 +22,6 @@ const THeader = () => {
           borderRight: '1px solid',
           borderTop: '1px solid',
           borderBottom: '1.5px solid',
-          borderLeft: isSplit ? '1px solid' : undefined,
           borderColor: 'divider',
         },
       }}
