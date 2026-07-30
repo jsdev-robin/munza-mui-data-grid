@@ -62,6 +62,7 @@ const ToolbarColumns = () => {
         <TextField
           fullWidth
           size="small"
+          type="search"
           placeholder="Search columns..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
