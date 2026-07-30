@@ -34,12 +34,7 @@ const THead = <T,>({ header }: THeadProps<T>) => {
   };
 
   return (
-    <TableCell
-      key={header.id}
-      component="th"
-      colSpan={header.colSpan}
-      sx={style}
-    >
+    <TableCell key={header.id} colSpan={header.colSpan} sx={style}>
       {header.isPlaceholder ? null : (
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           <Box

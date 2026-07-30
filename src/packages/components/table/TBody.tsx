@@ -8,6 +8,7 @@ import { useGrid } from '../../contexts/GridContext';
 import TCell from './TCell';
 
 const TBody = () => {
+  'use no memo';
   const { table, isSplit } = useGrid();
   return (
     <Table

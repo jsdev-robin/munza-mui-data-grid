@@ -27,6 +27,7 @@ const TMain = () => {
       <TableContainer
         ref={paneRef2}
         style={{
+          width: '100%',
           height: height,
         }}
       >

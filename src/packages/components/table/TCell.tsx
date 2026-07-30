@@ -17,7 +17,6 @@ const TCell = <T,>({ cell }: TCellProps<T>) => {
   const theme = useTheme();
 
   const style: CSSProperties = {
-    position: 'relative',
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
