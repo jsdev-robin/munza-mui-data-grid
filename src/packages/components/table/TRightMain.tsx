@@ -37,6 +37,7 @@ const TRightMain = () => {
             style={{
               width: '100%',
               height: height,
+              overflowX: 'scroll',
             }}
           >
             <TRightBody />

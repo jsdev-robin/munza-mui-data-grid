@@ -7,7 +7,7 @@ import TableRow from '@mui/material/TableRow';
 import React from 'react';
 import { useGrid } from '../../contexts/GridContext';
 import TCell from './TCell';
-import { TLeftCellPin } from './TLeftCellPin';
+import { TRightCellPin } from './TRightCellPin';
 
 const TRightBody = () => {
   'use no memo';
@@ -23,7 +23,7 @@ const TRightBody = () => {
     >
       <TableBody>
         {table.getTopRows().map((row) => (
-          <TLeftCellPin key={row.id} row={row} table={table} />
+          <TRightCellPin key={row.id} row={row} table={table} />
         ))}
         {table.getRowModel().rows.map((row) => (
           <React.Fragment key={row.id}>
@@ -42,7 +42,7 @@ const TRightBody = () => {
           </React.Fragment>
         ))}
         {table.getBottomRows().map((row) => (
-          <TLeftCellPin key={row.id} row={row} table={table} />
+          <TRightCellPin key={row.id} row={row} table={table} />
         ))}
       </TableBody>
     </Table>

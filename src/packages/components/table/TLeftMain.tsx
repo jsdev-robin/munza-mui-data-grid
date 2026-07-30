@@ -37,6 +37,7 @@ const TLeftMain = () => {
             style={{
               width: '100%',
               height: height,
+              overflowX: 'scroll',
             }}
           >
             <TLeftBody />
