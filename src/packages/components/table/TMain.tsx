@@ -26,11 +26,7 @@ const TMain = ({ topRightSlot }: { topRightSlot?: React.ReactNode }) => {
         ]}
       >
         {table.getSelectedRowModel().rows.length > 0 ? (
-          <Typography
-            sx={{ flex: '1 1 100%' }}
-            color="inherit"
-            variant="subtitle1"
-          >
+          <Typography color="inherit" variant="subtitle1">
             {table.getSelectedRowModel().rows.length} selected
           </Typography>
         ) : (
