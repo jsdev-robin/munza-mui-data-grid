@@ -2,6 +2,7 @@
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { useGrid } from '../../contexts/GridContext';
 
@@ -36,15 +37,15 @@ const ToolbarRows = () => {
           gap: 1,
         }}
       >
-        <Typography variant="body2">Row Density</Typography>
-        <Box
+        <Typography
+          variant="body2"
           sx={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 1,
-            flexWrap: 'wrap',
+            mb: 1,
           }}
         >
+          Row Density
+        </Typography>
+        <Stack spacing={1}>
           <Button
             size="small"
             variant={density === 'sm' ? 'contained' : 'outlined'}
@@ -68,7 +69,7 @@ const ToolbarRows = () => {
           >
             Large
           </Button>
-        </Box>
+        </Stack>
       </Box>
       <Box sx={{ px: 1 }}>
         <Button
