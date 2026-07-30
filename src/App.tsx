@@ -372,6 +372,7 @@ const App = () => {
         state={state}
         {...handlers}
         height="60vh"
+        topRightSlot={<div>Hello</div>}
       />
     </section>
   );

@@ -327,4 +327,6 @@ export interface GridProps<T> {
    * ```
    */
   children?: ReactNode;
+
+  topRightSlot?: React.ReactNode;
 }

@@ -1,5 +1,6 @@
 'use client';
 
+import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
@@ -10,7 +11,7 @@ import { useGrid } from '../../contexts/GridContext';
 import TBody from './TBody';
 import THeader from './THeader';
 
-const TMain = () => {
+const TMain = ({ topRightSlot }: { topRightSlot?: React.ReactNode }) => {
   'use no memo';
   const { paneRef1, paneRef2, height, table } = useGrid();
 
@@ -35,6 +36,14 @@ const TMain = () => {
         ) : (
           <TextField size="small" />
         )}
+        <Box
+          sx={{
+            ml: 'auto',
+            mr: 1,
+          }}
+        >
+          {topRightSlot}
+        </Box>
       </Toolbar>
       <TableContainer
         style={{

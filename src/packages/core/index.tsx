@@ -32,6 +32,7 @@ const Grid = <T,>({
   isPagination,
   children,
   name,
+  topRightSlot,
 }: GridProps<T>) => {
   'use no memo';
   return (
@@ -55,7 +56,11 @@ const Grid = <T,>({
       name={name}
       height={height}
     >
-      <GridInner isToolbar={isToolbar} isPagination={isPagination}>
+      <GridInner
+        isToolbar={isToolbar}
+        isPagination={isPagination}
+        topRightSlot={topRightSlot}
+      >
         {children}
       </GridInner>
     </GridContextProvider>
@@ -64,10 +69,12 @@ const Grid = <T,>({
 
 const GridInner = ({
   isToolbar = true,
+  topRightSlot,
 }: {
   children?: React.ReactNode;
   isToolbar?: boolean;
   isPagination?: boolean;
+  topRightSlot?: React.ReactNode;
 }) => {
   'use no memo';
   const { gridWrapperRef } = useGrid();
@@ -127,7 +134,7 @@ const GridInner = ({
           }}
           ref={tableWrapperRef}
         >
-          <TMain />
+          <TMain topRightSlot={topRightSlot} />
         </Box>
         <TRightMain />
 
