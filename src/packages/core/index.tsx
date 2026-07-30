@@ -2,6 +2,7 @@
 
 import Box from '@mui/material/Box';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import TLeftMain from '../components/table/TLeftMain';
 import TMain from '../components/table/TMain';
 import Toolbar from '../components/toolbar';
 import { GridContextProvider, useGrid } from '../contexts/GridContext';
@@ -115,6 +116,7 @@ const GridInner = ({
           width: '100%',
         }}
       >
+        <TLeftMain />
         <Box
           sx={{
             overflow: 'hidden',

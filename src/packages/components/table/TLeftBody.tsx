@@ -15,9 +15,6 @@ const TLeftBody = () => {
   return (
     <Table
       size="small"
-      style={{
-        width: table.getCenterTotalSize(),
-      }}
       sx={(theme) => ({
         '& .MuiTableCell-root': {
           border: `1px solid ${theme.palette.divider}`,

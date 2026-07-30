@@ -13,9 +13,6 @@ const TLeftHeader = () => {
 
   return (
     <Table
-      style={{
-        width: table.getCenterTotalSize(),
-      }}
       size="small"
       sx={(theme) => ({
         '& .MuiTableCell-root': {
