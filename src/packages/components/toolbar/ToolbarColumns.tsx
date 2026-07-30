@@ -113,7 +113,6 @@ const ToolbarColumns = () => {
       <Grid container spacing={1} sx={{ px: 1 }}>
         <Grid size={6}>
           <Button
-            fullWidth
             variant="outlined"
             size="small"
             onClick={() => {
@@ -127,7 +126,6 @@ const ToolbarColumns = () => {
 
         <Grid size={6}>
           <Button
-            fullWidth
             variant="outlined"
             size="small"
             onClick={() => table.resetColumnSizing()}
