@@ -1,3 +1,4 @@
+import Checkbox from '@mui/material/Checkbox';
 import { type ColumnDef } from '@tanstack/react-table';
 import { useMemo } from 'react';
 import { dummyVehicles, type Vehicle } from './data/dummyData';
@@ -24,25 +25,27 @@ const App = () => {
       {
         id: 'select',
         header: ({ table }) => (
-          <input
-            type="checkbox"
+          <Checkbox
             checked={table.getIsAllRowsSelected()}
-            ref={(el) => {
-              if (el) el.indeterminate = table.getIsSomeRowsSelected();
-            }}
+            indeterminate={table.getIsSomeRowsSelected()}
             onChange={table.getToggleAllRowsSelectedHandler()}
+            size="small"
+            disableRipple
+            sx={{ padding: 0 }}
           />
         ),
         cell: ({ row }) => (
-          <input
-            type="checkbox"
+          <Checkbox
             checked={row.getIsSelected()}
             disabled={!row.getCanSelect()}
             onChange={row.getToggleSelectedHandler()}
+            size="small"
+            disableRipple
+            sx={{ padding: 0 }}
           />
         ),
-        size: 50,
-        maxSize: 50,
+        size: 48,
+        maxSize: 48,
         enableColumnFilter: false,
         enableSorting: false,
       },
