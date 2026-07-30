@@ -133,7 +133,7 @@ const HeaderFilter = <T,>({ column }: { column: Column<T, unknown> }) => {
           fullWidth
         />
       ) : (
-        <Box sx={{ height: 32, opacity: 0, visibility: 'hidden' }} />
+        <Box sx={{ height: 28, opacity: 0, visibility: 'hidden' }} />
       )}
     </Box>
   ) : null;
