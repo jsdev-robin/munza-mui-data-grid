@@ -4,16 +4,17 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
-import TextField from '@mui/material/TextField';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import DebouncedInput from '../../../components/ui/debounced-input';
 import { useGrid } from '../../contexts/GridContext';
 import TBody from './TBody';
 import THeader from './THeader';
 
 const TMain = ({ topRightSlot }: { topRightSlot?: React.ReactNode }) => {
   'use no memo';
-  const { paneRef1, paneRef2, height, table } = useGrid();
+  const { paneRef1, paneRef2, height, table, setGlobalFilter, globalFilter } =
+    useGrid();
 
   return (
     <Paper>
@@ -23,7 +24,15 @@ const TMain = ({ topRightSlot }: { topRightSlot?: React.ReactNode }) => {
             {table.getSelectedRowModel().rows.length} selected
           </Typography>
         ) : (
-          <TextField size="small" />
+          <DebouncedInput
+            size="small"
+            type="search"
+            value={String(globalFilter)}
+            onChange={(value) => {
+              setGlobalFilter?.(String(value));
+            }}
+            placeholder="Search by query"
+          />
         )}
         <Box
           sx={{
