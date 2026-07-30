@@ -19,8 +19,11 @@ import {
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import Paper from '@mui/material/Paper';
+import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import type { CSSProperties } from 'react';
 import { useGrid } from '../../contexts/GridContext';
@@ -32,6 +35,7 @@ const DraggableColumnItem = ({
   columnId: string;
   label: string;
 }) => {
+  'use no memo';
   const {
     attributes,
     isDragging,
@@ -49,19 +53,18 @@ const DraggableColumnItem = ({
   };
 
   return (
-    <Box
+    <Paper
       ref={setNodeRef}
       style={style}
+      variant="outlined"
       sx={{
         display: 'flex',
         alignItems: 'center',
         gap: 1,
         borderRadius: 1,
-        border: 1,
-        borderColor: 'divider',
         bgcolor: 'action.hover',
         px: 1,
-        py: 0.75,
+        py: 0.5,
       }}
     >
       <Box
@@ -81,13 +84,13 @@ const DraggableColumnItem = ({
           .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
           .replace(/^./, (str) => str.toUpperCase())}
       </Typography>
-    </Box>
+    </Paper>
   );
 };
 
 const ToolbarDnd = () => {
+  'use no memo';
   const { table } = useGrid();
-
   const columnOrder = table.getState().columnOrder.length
     ? table.getState().columnOrder
     : table.getAllLeafColumns().map((column) => column.id);
@@ -137,13 +140,11 @@ const ToolbarDnd = () => {
           <Typography variant="subtitle1">
             Columns DND ({table.getAllLeafColumns().length})
           </Typography>
-          <Button
-            size="small"
-            variant="text"
-            onClick={() => table.resetColumnOrder()}
-          >
-            Reset
-          </Button>
+          <Tooltip title="Reset">
+            <IconButton size="small" onClick={() => table.resetColumnOrder()}>
+              <RestartAltIcon fontSize="small" />
+            </IconButton>
+          </Tooltip>
         </Box>
 
         <Box
@@ -152,7 +153,7 @@ const ToolbarDnd = () => {
             flexDirection: 'column',
             gap: 1,
             flex: 1,
-            px: 1.5,
+            px: 1,
             overflowY: 'auto',
           }}
         >
