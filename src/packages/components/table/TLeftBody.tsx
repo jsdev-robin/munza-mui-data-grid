@@ -7,11 +7,11 @@ import TableRow from '@mui/material/TableRow';
 import React from 'react';
 import { useGrid } from '../../contexts/GridContext';
 import TCell from './TCell';
-import { TCellPin } from './TCellPin';
+import { TLeftCellPin } from './TLeftCellPin';
 
 const TLeftBody = () => {
   'use no memo';
-  const { table, isSplit, renderSubComponent } = useGrid();
+  const { table, renderSubComponent } = useGrid();
   return (
     <Table
       size="small"
@@ -23,7 +23,7 @@ const TLeftBody = () => {
     >
       <TableBody>
         {table.getTopRows().map((row) => (
-          <TCellPin key={row.id} row={row} table={table} isSplit={isSplit} />
+          <TLeftCellPin key={row.id} row={row} table={table} />
         ))}
         {table.getRowModel().rows.map((row) => (
           <React.Fragment key={row.id}>
@@ -42,7 +42,7 @@ const TLeftBody = () => {
           </React.Fragment>
         ))}
         {table.getBottomRows().map((row) => (
-          <TCellPin key={row.id} row={row} table={table} isSplit={isSplit} />
+          <TLeftCellPin key={row.id} row={row} table={table} />
         ))}
       </TableBody>
     </Table>
