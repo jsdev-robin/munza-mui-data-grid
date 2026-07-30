@@ -26,6 +26,7 @@ const TCell = <T,>({ cell }: TCellProps<T>) => {
     padding: density === 'sm' ? '4px' : density === 'md' ? '8px' : '16px',
     height: isSplit ? 'calc(var(--cell-h))' : undefined,
     transition: 'padding 0.2s',
+
     ...getPinStyles(cell.column, isSplit, theme),
   };
 
@@ -51,7 +52,7 @@ const TCell = <T,>({ cell }: TCellProps<T>) => {
       ref={cellRef}
       key={cell.id}
       title={cell.getValue() != null ? String(cell.getValue()) : undefined}
-      sx={style}
+      style={style}
     >
       {flexRender(cell.column.columnDef.cell, cell.getContext())}
     </TableCell>

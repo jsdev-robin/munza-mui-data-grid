@@ -18,11 +18,12 @@ const TBody = () => {
       style={{
         width: table.getCenterTotalSize(),
       }}
-      sx={(theme) => ({
+      sx={{
         '& .MuiTableCell-root': {
-          border: `1px solid ${theme.palette.divider}`,
+          borderRight: '1px solid',
+          borderColor: 'divider',
         },
-      })}
+      }}
     >
       <TableBody>
         {table.getTopRows().map((row) => (

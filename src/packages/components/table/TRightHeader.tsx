@@ -14,11 +14,14 @@ const TRightHeader = () => {
   return (
     <Table
       size="small"
-      sx={(theme) => ({
+      sx={{
         '& .MuiTableCell-root': {
-          border: `1px solid ${theme.palette.divider}`,
+          borderRight: '1px solid',
+          borderTop: '1px solid',
+          borderBottom: '1.5px solid',
+          borderColor: 'divider',
         },
-      })}
+      }}
     >
       <TableHead>
         {table.getRightHeaderGroups().map((headerGroup) => (

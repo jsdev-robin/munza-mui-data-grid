@@ -15,11 +15,12 @@ const TLeftBody = () => {
   return (
     <Table
       size="small"
-      sx={(theme) => ({
+      sx={{
         '& .MuiTableCell-root': {
-          border: `1px solid ${theme.palette.divider}`,
+          borderRight: '1px solid',
+          borderColor: 'divider',
         },
-      })}
+      }}
     >
       <TableBody>
         {table.getTopRows().map((row) => (
