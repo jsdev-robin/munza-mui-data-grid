@@ -17,14 +17,7 @@ const TMain = ({ topRightSlot }: { topRightSlot?: React.ReactNode }) => {
 
   return (
     <Paper>
-      <Toolbar
-        sx={[
-          {
-            pl: { sm: 2 },
-            pr: { xs: 1, sm: 1 },
-          },
-        ]}
-      >
+      <Toolbar>
         {table.getSelectedRowModel().rows.length > 0 ? (
           <Typography color="inherit" variant="subtitle1">
             {table.getSelectedRowModel().rows.length} selected
@@ -35,7 +28,6 @@ const TMain = ({ topRightSlot }: { topRightSlot?: React.ReactNode }) => {
         <Box
           sx={{
             ml: 'auto',
-            mr: 1,
           }}
         >
           {topRightSlot}
