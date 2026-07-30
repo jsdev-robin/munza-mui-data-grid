@@ -1,0 +1,38 @@
+'use client';
+
+import TableRow from '@mui/material/TableRow';
+import { type Row, type Table } from '@tanstack/react-table';
+import TCell from './TCell';
+
+export function TRightCellPin({
+  row,
+  table,
+}: {
+  row: Row<any>;
+  table: Table<any>;
+}) {
+  'use no memo';
+  return (
+    <TableRow
+      style={{
+        backgroundColor: 'blue',
+        position: 'sticky',
+        zIndex: 10,
+        top:
+          row.getIsPinned() === 'top'
+            ? `calc(${row.getPinnedIndex()} * var(--cell-h))`
+            : undefined,
+        bottom:
+          row.getIsPinned() === 'bottom'
+            ? `calc(${
+                table.getBottomRows().length - 1 - row.getPinnedIndex()
+              } * var(--cell-h))`
+            : undefined,
+      }}
+    >
+      {row.getRightVisibleCells().map((cell) => (
+        <TCell key={cell.id} cell={cell} />
+      ))}
+    </TableRow>
+  );
+}

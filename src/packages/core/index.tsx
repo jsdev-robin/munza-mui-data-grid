@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import TLeftMain from '../components/table/TLeftMain';
 import TMain from '../components/table/TMain';
+import TRightMain from '../components/table/TRightMain';
 import Toolbar from '../components/toolbar';
 import { GridContextProvider, useGrid } from '../contexts/GridContext';
 import type { GridProps } from '../types';
@@ -126,6 +127,7 @@ const GridInner = ({
         >
           <TMain />
         </Box>
+        <TRightMain />
 
         {isToolbar && <Toolbar height={tableHeight} />}
       </Box>

@@ -4,12 +4,12 @@ import Paper from '@mui/material/Paper';
 import TableContainer from '@mui/material/TableContainer';
 import Toolbar from '@mui/material/Toolbar';
 import { useGrid } from '../../contexts/GridContext';
-import TLeftBody from './TLeftBody';
-import TLeftHeader from './TLeftHeader';
+import TRightBody from './TRightBody';
+import TRightHeader from './TRightHeader';
 
-const TLeftMain = () => {
+const TRightMain = () => {
   'use no memo';
-  const { isSplit, columnPinning, paneRef3, paneRef4, height, isError } =
+  const { isSplit, columnPinning, paneRef5, paneRef6, height, isError } =
     useGrid();
 
   return (
@@ -28,18 +28,18 @@ const TLeftMain = () => {
               overflowX: 'hidden',
               scrollbarColor: 'transparent transparent',
             }}
-            ref={paneRef3}
+            ref={paneRef5}
           >
-            <TLeftHeader />
+            <TRightHeader />
           </TableContainer>
           <TableContainer
-            ref={paneRef4}
+            ref={paneRef6}
             style={{
               width: '100%',
               height: height,
             }}
           >
-            <TLeftBody />
+            <TRightBody />
           </TableContainer>
         </Paper>
       ) : null}
@@ -47,4 +47,4 @@ const TLeftMain = () => {
   );
 };
 
-export default TLeftMain;
+export default TRightMain;
