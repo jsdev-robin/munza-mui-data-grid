@@ -5,6 +5,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
 import TextField from '@mui/material/TextField';
 import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 import { useGrid } from '../../contexts/GridContext';
 import TBody from './TBody';
 import THeader from './THeader';
@@ -23,7 +24,17 @@ const TMain = () => {
           },
         ]}
       >
-        <TextField size="small" />
+        {table.getSelectedRowModel().rows.length > 0 ? (
+          <Typography
+            sx={{ flex: '1 1 100%' }}
+            color="inherit"
+            variant="subtitle1"
+          >
+            {table.getSelectedRowModel().rows.length} selected
+          </Typography>
+        ) : (
+          <TextField size="small" />
+        )}
       </Toolbar>
       <TableContainer
         style={{
