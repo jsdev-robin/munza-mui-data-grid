@@ -293,7 +293,7 @@ const App = () => {
 
   const { state, handlers } = useGridState();
 
-  console.log(state.pagination);
+  console.log(state);
 
   return (
     <section

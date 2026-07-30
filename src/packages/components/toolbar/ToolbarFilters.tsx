@@ -5,10 +5,10 @@ import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Collapse from '@mui/material/Collapse';
-import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import type { Column } from '@tanstack/react-table';
 import React, { useEffect, useMemo, useState } from 'react';
+import DebouncedInput from '../../../components/ui/debounced-input';
 import { useGrid } from '../../contexts/GridContext';
 
 const ToolbarFilter = <T,>({ column }: { column: Column<T, unknown> }) => {
@@ -79,12 +79,12 @@ const ToolbarFilter = <T,>({ column }: { column: Column<T, unknown> }) => {
               <option value={val} key={i} />
             ))}
           </datalist>
-          <TextField
+          <DebouncedInput
             fullWidth
             size="small"
             type="text"
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
+            value={(columnFilterValue ?? '') as string}
+            onChange={(value) => column.setFilterValue(value)}
             placeholder={`Search... (${column.getFacetedUniqueValues().size})`}
             slotProps={{
               htmlInput: { list: column.id + 'list' },
@@ -100,14 +100,6 @@ const ToolbarFilter = <T,>({ column }: { column: Column<T, unknown> }) => {
 const ToolbarFilters = () => {
   'use no memo';
   const { table, globalFilter, setGlobalFilter } = useGrid();
-  const [search, setSearch] = useState(String(globalFilter ?? ''));
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setGlobalFilter?.(search);
-    }, 300);
-    return () => clearTimeout(timeout);
-  }, [search, setGlobalFilter]);
 
   return (
     <Box
@@ -134,11 +126,13 @@ const ToolbarFilters = () => {
       </Box>
 
       <Box sx={{ px: 1 }}>
-        <TextField
+        <DebouncedInput
           size="small"
           type="search"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          value={String(globalFilter)}
+          onChange={(value) => {
+            setGlobalFilter?.(String(value));
+          }}
           placeholder="Search all columns..."
         />
       </Box>
