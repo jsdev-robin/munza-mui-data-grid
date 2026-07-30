@@ -7,6 +7,7 @@ import TableRow from '@mui/material/TableRow';
 import React from 'react';
 import { useGrid } from '../../contexts/GridContext';
 import TCell from './TCell';
+import { TCellPin } from './TCellPin';
 
 const TBody = () => {
   'use no memo';
@@ -24,6 +25,9 @@ const TBody = () => {
       })}
     >
       <TableBody>
+        {table.getTopRows().map((row) => (
+          <TCellPin key={row.id} row={row} table={table} isSplit={isSplit} />
+        ))}
         {table.getRowModel().rows.map((row) => (
           <React.Fragment key={row.id}>
             <TableRow selected={row.getIsSelected()}>
@@ -42,6 +46,9 @@ const TBody = () => {
               </TableRow>
             )}
           </React.Fragment>
+        ))}
+        {table.getBottomRows().map((row) => (
+          <TCellPin key={row.id} row={row} table={table} isSplit={isSplit} />
         ))}
       </TableBody>
     </Table>

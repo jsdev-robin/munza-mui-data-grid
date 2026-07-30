@@ -8,6 +8,23 @@ const App = () => {
   const columns = useMemo<ColumnDef<Vehicle, unknown>[]>(
     () => [
       {
+        id: 'pin',
+        accessorKey: 'pin',
+        header: () => 'Pin',
+        size: 100,
+        maxSize: 100,
+        enableColumnFilter: false,
+        cell: ({ row }) =>
+          row.getIsPinned() ? (
+            <button onClick={() => row.pin(false)}>❌</button>
+          ) : (
+            <div style={{ display: 'flex', gap: '4px' }}>
+              <button onClick={() => row.pin('top')}>⬆️</button>
+              <button onClick={() => row.pin('bottom')}>⬇️</button>
+            </div>
+          ),
+      },
+      {
         id: 'id',
         accessorKey: 'id',
         cell: (info) => info.getValue(),
