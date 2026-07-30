@@ -32,6 +32,6 @@ export const getPinStyles = <T>(
     width: column.getSize(),
     zIndex: isPinned ? 1 : 0,
     background:
-      isPinned && !isSplit ? theme.palette.background.paper : undefined,
+      isPinned && !isSplit ? theme.palette.secondary.contrastText : undefined,
   };
 };
