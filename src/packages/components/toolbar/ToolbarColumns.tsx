@@ -28,9 +28,9 @@ const ToolbarColumns = () => {
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        gap: 1.5,
+        gap: 1,
         height: '100%',
-        py: 1.5,
+        py: 1,
       }}
     >
       <Box
@@ -38,8 +38,8 @@ const ToolbarColumns = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          px: 1.5,
-          pb: 1.5,
+          px: 1,
+          pb: 1,
           borderBottom: 1,
           borderColor: 'divider',
         }}
@@ -58,7 +58,7 @@ const ToolbarColumns = () => {
           Restore
         </Button>
       </Box>
-      <Box sx={{ px: 1.5 }}>
+      <Box sx={{ px: 1 }}>
         <TextField
           fullWidth
           size="small"
@@ -72,6 +72,7 @@ const ToolbarColumns = () => {
           display: 'flex',
           flexDirection: 'column',
           flex: 1,
+          px: 1.5,
           overflowY: 'auto',
         }}
       >
@@ -79,10 +80,6 @@ const ToolbarColumns = () => {
           <React.Fragment>
             {visibleColumns.map((column) => (
               <FormControlLabel
-                sx={{
-                  m: 0,
-                  py: 0,
-                }}
                 key={column.id}
                 control={
                   <Checkbox
@@ -105,20 +102,10 @@ const ToolbarColumns = () => {
             ))}
           </React.Fragment>
         ) : (
-          <Typography
-            variant="body2"
-            align="center"
-            sx={{
-              px: 2,
-              py: 4,
-              color: 'text.secondary',
-            }}
-          >
-            No columns found
-          </Typography>
+          <Typography align="center">No columns found</Typography>
         )}
       </Box>
-      <Grid container spacing={1.5} sx={{ px: 1.5 }}>
+      <Grid container spacing={1} sx={{ px: 1 }}>
         <Grid size={6}>
           <Button
             fullWidth
