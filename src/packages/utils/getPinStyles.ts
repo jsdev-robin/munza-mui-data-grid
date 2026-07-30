@@ -30,7 +30,7 @@ export const getPinStyles = <T>(
         : undefined,
     position: isPinned ? (isSplit ? 'relative' : 'sticky') : 'relative',
     width: column.getSize(),
-    zIndex: isPinned ? 9999 : 0,
+    zIndex: isPinned ? 1 : 0,
     background:
       isPinned && !isSplit ? theme.palette.background.paper : undefined,
   };

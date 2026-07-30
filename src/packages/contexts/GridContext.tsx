@@ -104,6 +104,7 @@ export const GridContextProvider = <T,>({
   name = 'munza',
   height,
 }: GridContextProviderProps<T>) => {
+  'use no memo';
   const gridWrapperRef = useRef<HTMLDivElement>(null);
   const [density, setDensity] = React.useState<DensityState>('md');
   const [columnVisibility, onColumnVisibilityChange] =
@@ -250,6 +251,7 @@ export const GridContextProvider = <T,>({
 };
 
 export function useGrid() {
+  'use no memo';
   const context = useContext(
     GridContext as React.Context<GridContextProps<unknown> | null>,
   );
