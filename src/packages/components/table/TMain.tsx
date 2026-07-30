@@ -3,6 +3,7 @@
 import Paper from '@mui/material/Paper';
 import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
+import TextField from '@mui/material/TextField';
 import Toolbar from '@mui/material/Toolbar';
 import { useGrid } from '../../contexts/GridContext';
 import TBody from './TBody';
@@ -14,7 +15,9 @@ const TMain = () => {
 
   return (
     <Paper>
-      <Toolbar>d</Toolbar>
+      <Toolbar>
+        <TextField size="small" />
+      </Toolbar>
       <TableContainer
         style={{
           width: '100%',
