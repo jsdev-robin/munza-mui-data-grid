@@ -30,7 +30,7 @@ const ToolbarRows = () => {
       >
         <Typography variant="subtitle1">Rows</Typography>
       </Box>
-      <Box
+      <Stack
         sx={{
           px: 1,
           flex: 1,
@@ -70,7 +70,7 @@ const ToolbarRows = () => {
             Large
           </Button>
         </Stack>
-      </Box>
+      </Stack>
       <Box sx={{ px: 1 }}>
         <Button
           size="small"
