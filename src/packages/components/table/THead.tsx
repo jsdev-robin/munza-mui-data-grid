@@ -13,8 +13,8 @@ interface THeadProps<T> {
 }
 
 const THead = <T,>({ header }: THeadProps<T>) => {
+  'use no memo';
   const { isSplit } = useGrid();
-
   const style: CSSProperties = {
     padding: 0,
     position: 'relative',
@@ -28,7 +28,7 @@ const THead = <T,>({ header }: THeadProps<T>) => {
   };
 
   return (
-    <TableCell key={header.id} style={style}>
+    <TableCell key={header.id} style={style} component="th">
       <Box
         sx={{
           padding: '4px 4px',

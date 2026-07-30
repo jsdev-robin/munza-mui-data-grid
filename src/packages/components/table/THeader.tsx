@@ -7,6 +7,8 @@ import { useGrid } from '../../contexts/GridContext';
 import THead from './THead';
 
 const THeader = () => {
+  'use no memo';
+
   const { table, isSplit } = useGrid();
 
   return (
