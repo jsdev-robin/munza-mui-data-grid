@@ -2,14 +2,15 @@
 
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
-import RefreshIcon from '@mui/icons-material/Refresh';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
 import { useGrid } from '../../contexts/GridContext';
 
 const ToolbarSettings = () => {
+  'use no memo';
   const { table, setIsSplit, gridWrapperRef, isFetching, refetch } = useGrid();
   const [isFullscreen, setIsFullscreen] = useState(false);
 
@@ -66,12 +67,11 @@ const ToolbarSettings = () => {
         <Typography variant="subtitle1">Settings</Typography>
       </Box>
 
-      <Box
+      <Stack
         sx={{
           px: 1,
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 1.5,
+          flex: 1,
+          gap: 1,
         }}
       >
         <Button
@@ -94,22 +94,8 @@ const ToolbarSettings = () => {
           size="small"
           onClick={() => refetch?.()}
           disabled={isFetching}
-          startIcon={
-            <RefreshIcon
-              fontSize="small"
-              sx={
-                isFetching
-                  ? {
-                      animation: 'spin 1s linear infinite',
-                      '@keyframes spin': {
-                        '0%': { transform: 'rotate(0deg)' },
-                        '100%': { transform: 'rotate(360deg)' },
-                      },
-                    }
-                  : undefined
-              }
-            />
-          }
+          loading={isFetching}
+          loadingPosition="start"
         >
           {isFetching ? 'Refreshing...' : 'Refresh Data'}
         </Button>
@@ -117,7 +103,7 @@ const ToolbarSettings = () => {
         <Button variant="outlined" size="small" onClick={handleReset}>
           Reset to Default
         </Button>
-      </Box>
+      </Stack>
     </Box>
   );
 };
