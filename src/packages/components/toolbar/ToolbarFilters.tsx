@@ -69,18 +69,45 @@ const ToolbarFilter = <T,>({ column }: { column: Column<T, unknown> }) => {
               <option value={val} key={i} />
             ))}
           </datalist>
-          <DebouncedInput
-            fullWidth
-            size="small"
-            type="text"
-            value={(columnFilterValue ?? '') as string}
-            onChange={(value) => column.setFilterValue(value)}
-            placeholder={`Search... (${column.getFacetedUniqueValues().size})`}
-            slotProps={{
-              htmlInput: { list: column.id + 'list' },
-            }}
-            disabled={filterVariant === undefined}
-          />
+          {filterVariant === 'range' ? (
+            <Box sx={{ display: 'flex', gap: 1 }}>
+              <DebouncedInput
+                size="small"
+                type="number"
+                value={(columnFilterValue as [number, number])?.[0] ?? ''}
+                onChange={(value) =>
+                  column.setFilterValue((old: [number, number]) => [
+                    value,
+                    old?.[1],
+                  ])
+                }
+                placeholder="Min"
+              />
+              <DebouncedInput
+                size="small"
+                type="number"
+                value={(columnFilterValue as [number, number])?.[1] ?? ''}
+                onChange={(value) =>
+                  column.setFilterValue((old: [number, number]) => [
+                    old?.[0],
+                    value,
+                  ])
+                }
+                placeholder="Max"
+              />
+            </Box>
+          ) : (
+            <DebouncedInput
+              fullWidth
+              size="small"
+              type="text"
+              value={(columnFilterValue ?? '') as string}
+              onChange={(value) => column.setFilterValue(value)}
+              placeholder={`Search... (${column.getFacetedUniqueValues().size})`}
+              slotProps={{ htmlInput: { list: column.id + 'list' } }}
+              disabled={filterVariant === undefined}
+            />
+          )}
         </Box>
       </Collapse>
     </Box>
