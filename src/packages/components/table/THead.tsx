@@ -16,6 +16,7 @@ interface THeadProps<T> {
 }
 
 const THead = <T,>({ header }: THeadProps<T>) => {
+  'use no memo';
   const { isSplit } = useGrid();
 
   const style: CSSProperties = {
