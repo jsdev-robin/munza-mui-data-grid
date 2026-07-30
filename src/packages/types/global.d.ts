@@ -16,6 +16,7 @@ declare module '@tanstack/react-table' {
       | 'datetime-local'
       | 'month'
       | 'time'
-      | 'week';
+      | 'week'
+      | 'search';
   }
 }

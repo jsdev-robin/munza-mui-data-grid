@@ -113,6 +113,7 @@ const HeaderFilter = <T,>({ column }: { column: Column<T, unknown> }) => {
           'tel',
           'url',
           'color',
+          'search',
         ].includes(filterVariant) ? (
         <DebouncedInput
           onChange={(value) => column.setFilterValue(value)}
