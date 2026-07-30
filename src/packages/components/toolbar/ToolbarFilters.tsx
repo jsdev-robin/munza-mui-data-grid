@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import Collapse from '@mui/material/Collapse';
 import Typography from '@mui/material/Typography';
 import type { Column } from '@tanstack/react-table';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import DebouncedInput from '../../../components/ui/debounced-input';
 import { useGrid } from '../../contexts/GridContext';
 
@@ -28,16 +28,6 @@ const ToolbarFilter = <T,>({ column }: { column: Column<T, unknown> }) => {
   const columnFilterValue = column.getFilterValue();
   const { filterVariant } = column.columnDef.meta ?? {};
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState((columnFilterValue ?? '') as string);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      column.setFilterValue(value);
-    }, 300);
-    return () => clearTimeout(timeout);
-  }, [value, column]);
-
-  if (!column.getCanFilter()) return null;
 
   return (
     <Box>
