@@ -31,7 +31,7 @@ const App = () => {
             onChange={table.getToggleAllRowsSelectedHandler()}
             size="small"
             disableRipple
-            sx={{ padding: 0 }}
+            sx={{ padding: 0, ml: 0.5 }}
           />
         ),
         cell: ({ row }) => (
