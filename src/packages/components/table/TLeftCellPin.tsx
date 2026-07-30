@@ -4,14 +4,12 @@ import TableRow from '@mui/material/TableRow';
 import { type Row, type Table } from '@tanstack/react-table';
 import TCell from './TCell';
 
-export function TCellPin({
+export function TLeftCellPin({
   row,
   table,
-  isSplit,
 }: {
   row: Row<any>;
   table: Table<any>;
-  isSplit: boolean;
 }) {
   'use no memo';
   return (
@@ -32,11 +30,9 @@ export function TCellPin({
             : undefined,
       }}
     >
-      {(isSplit ? row.getCenterVisibleCells() : row.getVisibleCells()).map(
-        (cell) => (
-          <TCell key={cell.id} cell={cell} />
-        ),
-      )}
+      {row.getLeftVisibleCells().map((cell) => (
+        <TCell key={cell.id} cell={cell} />
+      ))}
     </TableRow>
   );
 }
