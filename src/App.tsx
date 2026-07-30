@@ -1,4 +1,10 @@
+import AddIcon from '@mui/icons-material/Add';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import RefreshIcon from '@mui/icons-material/Refresh';
 import Checkbox from '@mui/material/Checkbox';
+import IconButton from '@mui/material/IconButton';
+import Stack from '@mui/material/Stack';
+import Tooltip from '@mui/material/Tooltip';
 import { type ColumnDef } from '@tanstack/react-table';
 import { useMemo } from 'react';
 import { dummyVehicles, type Vehicle } from './data/dummyData';
@@ -372,7 +378,35 @@ const App = () => {
         state={state}
         {...handlers}
         height="55vh"
-        topRightSlot={<div>Custom Action Button</div>}
+        topRightSlot={
+          <Stack direction="row" spacing={1}>
+            <Tooltip title="Filter">
+              <IconButton
+                size="small"
+                onClick={() => console.log('filter clicked')}
+              >
+                <FilterListIcon fontSize="small" />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Refresh">
+              <IconButton
+                size="small"
+                onClick={() => console.log('refresh clicked')}
+              >
+                <RefreshIcon fontSize="small" />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Add Vehicle">
+              <IconButton
+                size="small"
+                color="primary"
+                onClick={() => console.log('add clicked')}
+              >
+                <AddIcon fontSize="small" />
+              </IconButton>
+            </Tooltip>
+          </Stack>
+        }
       />
     </section>
   );
