@@ -11,6 +11,9 @@ const THeader = () => {
 
   return (
     <Table
+      style={{
+        width: table.getCenterTotalSize(),
+      }}
       size="small"
       sx={(theme) => ({
         '& .MuiTableCell-root': {

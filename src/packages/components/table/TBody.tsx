@@ -2,16 +2,18 @@
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
-import { flexRender } from '@tanstack/react-table';
 import { useGrid } from '../../contexts/GridContext';
+import TCell from './TCell';
 
 const TBody = () => {
-  const { table } = useGrid();
+  const { table, isSplit } = useGrid();
   return (
     <Table
       size="small"
+      style={{
+        width: table.getCenterTotalSize(),
+      }}
       sx={(theme) => ({
         '& .MuiTableCell-root': {
           border: `1px solid ${theme.palette.divider}`,
@@ -21,20 +23,11 @@ const TBody = () => {
       <TableBody>
         {table.getRowModel().rows.map((row) => (
           <TableRow key={row.id}>
-            {row.getVisibleCells().map((cell) => (
-              <TableCell
-                key={cell.id}
-                style={{
-                  width: cell.column.getSize(),
-                  minWidth: cell.column.getSize(),
-                  maxWidth: cell.column.getSize(),
-                  overflow: 'hidden',
-                  whiteSpace: 'nowrap',
-                  textOverflow: 'ellipsis',
-                }}
-              >
-                {flexRender(cell.column.columnDef.cell, cell.getContext())}
-              </TableCell>
+            {(isSplit
+              ? row.getCenterVisibleCells()
+              : row.getVisibleCells()
+            ).map((cell) => (
+              <TCell key={cell.id} cell={cell} />
             ))}
           </TableRow>
         ))}
