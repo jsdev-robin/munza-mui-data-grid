@@ -1,11 +1,14 @@
 'use client';
 
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
 import TextField from '@mui/material/TextField';
+import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import React, { useMemo, useState } from 'react';
 import { useGrid } from '../../contexts/GridContext';
@@ -44,19 +47,20 @@ const ToolbarColumns = () => {
           borderColor: 'divider',
         }}
       >
-        <Typography variant="body2">
+        <Typography variant="subtitle1">
           Columns ({table.getAllLeafColumns().length})
         </Typography>
-
-        <Button
-          size="small"
-          onClick={() => {
-            table.resetColumnVisibility();
-            setSearchTerm('');
-          }}
-        >
-          Restore
-        </Button>
+        <Tooltip title="Restore">
+          <IconButton
+            size="small"
+            onClick={() => {
+              table.resetColumnVisibility();
+              setSearchTerm('');
+            }}
+          >
+            <RestartAltIcon fontSize="small" />
+          </IconButton>
+        </Tooltip>
       </Box>
       <Box sx={{ px: 1 }}>
         <TextField
