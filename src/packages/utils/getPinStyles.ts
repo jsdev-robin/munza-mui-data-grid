@@ -1,9 +1,11 @@
+import type { Theme } from '@mui/material/styles';
 import type { Column } from '@tanstack/react-table';
 import type { CSSProperties } from 'react';
 
 export const getPinStyles = <T>(
   column: Column<T>,
   isSplit: boolean,
+  theme: Theme,
 ): CSSProperties => {
   const isPinned = column.getIsPinned();
   const isLastLeftPinnedColumn =
@@ -12,9 +14,11 @@ export const getPinStyles = <T>(
     isPinned === 'right' && column.getIsFirstColumn('right');
 
   return {
-    borderRight: isLastLeftPinnedColumn ? '1px solid var(--border)' : undefined,
+    borderRight: isLastLeftPinnedColumn
+      ? `1px solid ${theme.palette.divider}`
+      : undefined,
     borderLeft: isFirstRightPinnedColumn
-      ? '1px solid var(--border)'
+      ? `1px solid ${theme.palette.divider}`
       : undefined,
     left:
       isPinned === 'left' && !isSplit
@@ -26,7 +30,8 @@ export const getPinStyles = <T>(
         : undefined,
     position: isPinned ? (isSplit ? 'relative' : 'sticky') : 'relative',
     width: column.getSize(),
-    zIndex: isPinned ? 1 : 0,
-    background: isPinned && !isSplit ? `var(--muted)` : undefined,
+    zIndex: isPinned ? 9999 : 0,
+    background:
+      isPinned && !isSplit ? theme.palette.background.paper : undefined,
   };
 };

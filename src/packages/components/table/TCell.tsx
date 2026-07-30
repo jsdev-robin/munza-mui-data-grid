@@ -1,5 +1,6 @@
 'use client';
 
+import { useTheme } from '@mui/material/styles';
 import TableCell from '@mui/material/TableCell';
 import { flexRender, type Cell } from '@tanstack/react-table';
 import { useLayoutEffect, useRef, type CSSProperties } from 'react';
@@ -13,8 +14,10 @@ const TCell = <T,>({ cell }: TCellProps<T>) => {
   'use no memo';
   const { density, isSplit } = useGrid();
   const cellRef = useRef<HTMLTableCellElement>(null);
+  const theme = useTheme();
 
   const style: CSSProperties = {
+    position: 'relative',
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
@@ -24,7 +27,7 @@ const TCell = <T,>({ cell }: TCellProps<T>) => {
     padding: density === 'sm' ? '4px' : density === 'md' ? '8px' : '16px',
     height: isSplit ? 'calc(var(--cell-h))' : undefined,
     transition: 'padding 0.2s',
-    ...getPinStyles(cell.column, isSplit),
+    ...getPinStyles(cell.column, isSplit, theme),
   };
 
   useLayoutEffect(() => {
@@ -45,7 +48,12 @@ const TCell = <T,>({ cell }: TCellProps<T>) => {
   }, [density, isSplit]);
 
   return (
-    <TableCell key={cell.id} style={style}>
+    <TableCell
+      ref={cellRef}
+      key={cell.id}
+      title={cell.getValue() != null ? String(cell.getValue()) : undefined}
+      sx={style}
+    >
       {flexRender(cell.column.columnDef.cell, cell.getContext())}
     </TableCell>
   );

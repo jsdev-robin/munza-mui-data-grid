@@ -1,6 +1,7 @@
 'use client';
 
 import Box from '@mui/material/Box';
+import { useTheme } from '@mui/material/styles';
 import TableCell from '@mui/material/TableCell';
 import { type Header } from '@tanstack/react-table';
 import type { CSSProperties } from 'react';
@@ -18,6 +19,7 @@ interface THeadProps<T> {
 const THead = <T,>({ header }: THeadProps<T>) => {
   'use no memo';
   const { isSplit } = useGrid();
+  const theme = useTheme();
 
   const style: CSSProperties = {
     position: 'relative',
@@ -28,7 +30,7 @@ const THead = <T,>({ header }: THeadProps<T>) => {
     padding: 0,
     overflow: 'hidden',
     textOverflow: 'ellipsis',
-    ...getPinStyles(header.column, isSplit),
+    ...getPinStyles(header.column, isSplit, theme),
   };
 
   return (
@@ -36,13 +38,7 @@ const THead = <T,>({ header }: THeadProps<T>) => {
       key={header.id}
       component="th"
       colSpan={header.colSpan}
-      style={style}
-      sx={{
-        position: 'relative',
-        '&:hover .header-resizer': {
-          opacity: 1,
-        },
-      }}
+      sx={style}
     >
       {header.isPlaceholder ? null : (
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>

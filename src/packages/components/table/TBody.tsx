@@ -3,6 +3,7 @@
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
+import React from 'react';
 import { useGrid } from '../../contexts/GridContext';
 import TCell from './TCell';
 
@@ -22,14 +23,16 @@ const TBody = () => {
     >
       <TableBody>
         {table.getRowModel().rows.map((row) => (
-          <TableRow key={row.id}>
-            {(isSplit
-              ? row.getCenterVisibleCells()
-              : row.getVisibleCells()
-            ).map((cell) => (
-              <TCell key={cell.id} cell={cell} />
-            ))}
-          </TableRow>
+          <React.Fragment key={row.id}>
+            <TableRow selected={row.getIsSelected()}>
+              {(isSplit
+                ? row.getCenterVisibleCells()
+                : row.getVisibleCells()
+              ).map((cell) => (
+                <TCell key={cell.id} cell={cell} />
+              ))}
+            </TableRow>
+          </React.Fragment>
         ))}
       </TableBody>
     </Table>

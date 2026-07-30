@@ -30,6 +30,7 @@ const Grid = <T,>({
   children,
   name,
 }: GridProps<T>) => {
+  'use no memo';
   return (
     <GridContextProvider
       payload={payload}
@@ -65,6 +66,7 @@ const GridInner = ({
   isToolbar?: boolean;
   isPagination?: boolean;
 }) => {
+  'use no memo';
   const { gridWrapperRef } = useGrid();
   const tableWrapperRef = useRef<HTMLDivElement>(null);
   const [tableHeight, setTableHeight] = useState<number>(0);
