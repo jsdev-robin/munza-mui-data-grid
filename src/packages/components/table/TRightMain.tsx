@@ -14,7 +14,7 @@ const TRightMain = () => {
 
   return (
     <>
-      {!isError && isSplit && (columnPinning?.left?.length ?? 0) > 0 ? (
+      {!isError && isSplit && (columnPinning?.right?.length ?? 0) > 0 ? (
         <Paper
           sx={{
             maxWidth: '220px',
