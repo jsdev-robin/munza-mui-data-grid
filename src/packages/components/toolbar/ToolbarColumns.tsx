@@ -71,8 +71,6 @@ const ToolbarColumns = () => {
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          gap: 2,
-          px: 1.5,
           flex: 1,
           overflowY: 'auto',
         }}
@@ -81,6 +79,10 @@ const ToolbarColumns = () => {
           <React.Fragment>
             {visibleColumns.map((column) => (
               <FormControlLabel
+                sx={{
+                  m: 0,
+                  py: 0,
+                }}
                 key={column.id}
                 control={
                   <Checkbox
