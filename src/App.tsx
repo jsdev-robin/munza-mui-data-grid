@@ -22,6 +22,31 @@ const App = () => {
         enableColumnFilter: false,
       },
       {
+        id: 'select',
+        header: ({ table }) => (
+          <input
+            type="checkbox"
+            checked={table.getIsAllRowsSelected()}
+            ref={(el) => {
+              if (el) el.indeterminate = table.getIsSomeRowsSelected();
+            }}
+            onChange={table.getToggleAllRowsSelectedHandler()}
+          />
+        ),
+        cell: ({ row }) => (
+          <input
+            type="checkbox"
+            checked={row.getIsSelected()}
+            disabled={!row.getCanSelect()}
+            onChange={row.getToggleSelectedHandler()}
+          />
+        ),
+        size: 50,
+        maxSize: 50,
+        enableColumnFilter: false,
+        enableSorting: false,
+      },
+      {
         id: 'pin',
         accessorKey: 'pin',
         header: () => 'Pin',
