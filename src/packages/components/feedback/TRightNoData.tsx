@@ -7,7 +7,7 @@ import TableRow from '@mui/material/TableRow';
 import { useGrid } from '../../contexts/GridContext';
 import TDataNotFound from './TDataNotFound';
 
-const TLeftNoData = () => {
+const TRightNoData = () => {
   const { table } = useGrid();
 
   return (
@@ -22,7 +22,7 @@ const TLeftNoData = () => {
     >
       <TableBody>
         <TableRow>
-          {table.getLeftVisibleLeafColumns().map((column, i) => (
+          {table.getRightVisibleLeafColumns().map((column, i) => (
             <TableCell
               key={i}
               style={{
@@ -40,4 +40,4 @@ const TLeftNoData = () => {
   );
 };
 
-export default TLeftNoData;
+export default TRightNoData;

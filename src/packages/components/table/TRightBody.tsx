@@ -6,13 +6,22 @@ import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import React from 'react';
 import { useGrid } from '../../contexts/GridContext';
+import TRightNoData from '../feedback/TRightNoData';
+import TRightSkeleton from '../feedback/TRightSkeleton';
 import TCell from './TCell';
 import { TRightCellPin } from './TRightCellPin';
 
 const TRightBody = () => {
   'use no memo';
-  const { table, renderSubComponent } = useGrid();
-  return (
+  const { table, renderSubComponent, isLoading, isError } = useGrid();
+
+  return isLoading ? (
+    <TRightSkeleton />
+  ) : isError ? (
+    <div>Error</div>
+  ) : table.getRowModel().rows.length === 0 ? (
+    <TRightNoData />
+  ) : (
     <Table
       size="small"
       sx={{
@@ -49,4 +58,5 @@ const TRightBody = () => {
     </Table>
   );
 };
+
 export default TRightBody;

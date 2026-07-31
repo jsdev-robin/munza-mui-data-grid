@@ -6,13 +6,22 @@ import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import React from 'react';
 import { useGrid } from '../../contexts/GridContext';
+import TLeftNoData from '../feedback/TLeftNoData';
+import TLeftSkeleton from '../feedback/TLeftSkeleton';
 import TCell from './TCell';
 import { TLeftCellPin } from './TLeftCellPin';
 
 const TLeftBody = () => {
   'use no memo';
-  const { table, renderSubComponent } = useGrid();
-  return (
+  const { table, renderSubComponent, isLoading, isError } = useGrid();
+
+  return isLoading ? (
+    <TLeftSkeleton />
+  ) : isError ? (
+    <div>Error</div>
+  ) : table.getRowModel().rows.length === 0 ? (
+    <TLeftNoData />
+  ) : (
     <Table
       size="small"
       sx={{
