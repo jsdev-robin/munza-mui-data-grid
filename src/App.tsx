@@ -7,7 +7,7 @@ import Stack from '@mui/material/Stack';
 import Tooltip from '@mui/material/Tooltip';
 import { type ColumnDef } from '@tanstack/react-table';
 import { useMemo } from 'react';
-import { dummyVehicles, type Vehicle } from './data/dummyData';
+import { type Vehicle } from './data/dummyData';
 import { Grid } from './packages/core';
 import { useGridState } from './packages/hooks/useGridState';
 
@@ -368,8 +368,8 @@ const App = () => {
     >
       <Grid
         payload={{
-          data: dummyVehicles,
-          total: 1000,
+          data: [],
+          total: 0,
         }}
         columns={columns}
         isLoading={false}

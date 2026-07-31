@@ -33,18 +33,16 @@ const TDataNotFound = () => {
             width: 48,
             height: 48,
             borderRadius: '50%',
-            bgcolor: 'action.hover',
+            bgcolor: 'red',
             mb: 1.5,
           }}
         >
-          <DatabaseIcon sx={{ fontSize: 24, color: 'text.secondary' }} />
+          <DatabaseIcon sx={{ fontSize: 24 }} />
         </Box>
         <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
           No data
         </Typography>
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-          No data found
-        </Typography>
+        <Typography variant="body2">No data found</Typography>
       </Box>
     </Box>
   );

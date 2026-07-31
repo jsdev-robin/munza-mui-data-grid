@@ -20,25 +20,29 @@ const TNoData = () => {
   );
 
   return (
-    <>
-      <Table>
-        <TableBody>
-          <TableRow>
-            {visibleColumns.map((column, i) => (
-              <TableCell
-                key={i}
-                style={{
-                  width: column.getSize(),
-                  minWidth: column.getSize(),
-                  maxWidth: column.getSize(),
-                }}
-              />
-            ))}
-          </TableRow>
-        </TableBody>
-      </Table>
-      <TDataNotFound />
-    </>
+    <Table
+      size="small"
+      style={{
+        width: table.getCenterTotalSize(),
+      }}
+    >
+      <TableBody>
+        <TableRow>
+          {visibleColumns.map((column, i) => (
+            <TableCell
+              key={i}
+              style={{
+                width: column.getSize(),
+                minWidth: column.getSize(),
+                maxWidth: column.getSize(),
+              }}
+            >
+              <TDataNotFound />
+            </TableCell>
+          ))}
+        </TableRow>
+      </TableBody>
+    </Table>
   );
 };
 
