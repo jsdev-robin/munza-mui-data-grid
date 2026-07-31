@@ -6,13 +6,23 @@ import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import React from 'react';
 import { useGrid } from '../../contexts/GridContext';
+import TError from '../feedback/TError';
+import TNoData from '../feedback/TNoData';
+import TSkeleton from '../feedback/TSkeleton';
 import TCell from './TCell';
 import { TCellPin } from './TCellPin';
 
 const TBody = () => {
   'use no memo';
-  const { table, isSplit, renderSubComponent } = useGrid();
-  return (
+  const { table, isSplit, renderSubComponent, isLoading, isError } = useGrid();
+
+  return isLoading ? (
+    <TSkeleton />
+  ) : isError ? (
+    <TError />
+  ) : table.getRowModel().rows.length === 0 ? (
+    <TNoData />
+  ) : (
     <Table
       size="small"
       style={{
