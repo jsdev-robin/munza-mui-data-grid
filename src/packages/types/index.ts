@@ -328,5 +328,31 @@ export interface GridProps<T> {
    */
   children?: ReactNode;
 
+  /**
+   * Additional content rendered on the right side of the built-in toolbar,
+   * next to the global search field (e.g. custom action buttons like
+   * Add, Filter, Refresh, or Export). Only visible when `isToolbar` is `true`.
+   *
+   * @example
+   * ```tsx
+   * <Grid
+   *   topRightSlot={
+   *     <Stack direction="row" spacing={1}>
+   *       <Tooltip title="Refresh">
+   *         <IconButton size="small" onClick={refetch}>
+   *           <RefreshIcon fontSize="small" />
+   *         </IconButton>
+   *       </Tooltip>
+   *       <Tooltip title="Add Vehicle">
+   *         <IconButton size="small" color="primary" onClick={handleAdd}>
+   *           <AddIcon fontSize="small" />
+   *         </IconButton>
+   *       </Tooltip>
+   *     </Stack>
+   *   }
+   *   ...
+   * />
+   * ```
+   */
   topRightSlot?: React.ReactNode;
 }

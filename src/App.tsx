@@ -7,9 +7,10 @@ import Stack from '@mui/material/Stack';
 import Tooltip from '@mui/material/Tooltip';
 import { type ColumnDef } from '@tanstack/react-table';
 import { useMemo } from 'react';
-import { type Vehicle } from './data/dummyData';
+import { dummyVehicles, type Vehicle } from './data/dummyData';
 import { Grid } from './packages/core';
 import { useGridState } from './packages/hooks/useGridState';
+import { pluckSelected } from './packages/utils/pluckSelected';
 
 const App = () => {
   const columns = useMemo<ColumnDef<Vehicle, unknown>[]>(
@@ -356,9 +357,11 @@ const App = () => {
     [],
   );
 
-  const { state, handlers } = useGridState();
+  const { state, handlers, rowSelection } = useGridState();
 
-  console.log(state);
+  const selectedIds = pluckSelected(dummyVehicles, rowSelection, 'id');
+
+  console.log(selectedIds);
 
   return (
     <section
@@ -368,8 +371,8 @@ const App = () => {
     >
       <Grid
         payload={{
-          data: [],
-          total: 0,
+          data: dummyVehicles,
+          total: 99,
         }}
         columns={columns}
         isLoading={false}
