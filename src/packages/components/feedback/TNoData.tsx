@@ -25,6 +25,12 @@ const TNoData = () => {
       style={{
         width: table.getCenterTotalSize(),
       }}
+      sx={{
+        '& .MuiTableCell-root': {
+          borderBottom: '1px solid',
+          borderColor: 'transparent',
+        },
+      }}
     >
       <TableBody>
         <TableRow>
