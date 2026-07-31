@@ -89,7 +89,7 @@ const App = () => {
         cell: (info) => info.getValue(),
         header: () => <div>Driver</div>,
         meta: {
-          filterVariant: 'range',
+          filterVariant: 'select',
         },
       },
       {
