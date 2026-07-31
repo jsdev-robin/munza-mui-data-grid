@@ -1,4 +1,4 @@
-# @munza/mui-data-grid
+# munza-mui-data-grid
 
 A feature-rich, headless-powered data grid for React — built on [TanStack Table v8](https://tanstack.com/table) and [MUI](https://mui.com/). Sorting, filtering, pagination, row selection, column/row pinning, resizing, drag-and-drop column ordering, expandable rows, and split (frozen) columns — all out of the box.
 
@@ -22,7 +22,7 @@ A feature-rich, headless-powered data grid for React — built on [TanStack Tabl
 ## Installation
 
 ```bash
-npm install @munza/mui-data-grid
+npm install munza-mui-data-grid
 ```
 
 ### Peer Dependencies
@@ -36,7 +36,7 @@ npm install react react-dom @mui/material @emotion/react @emotion/styled @mui/ic
 ## Quick Start
 
 ```tsx
-import { Grid, useGridState, type ColumnDef } from '@munza/mui-data-grid';
+import { Grid, useGridState, type ColumnDef } from 'munza-mui-data-grid';
 
 interface User {
   id: string;
@@ -125,7 +125,7 @@ import Tooltip from '@mui/material/Tooltip';
 Use the `pluckSelected` utility to extract a field from all selected rows:
 
 ```tsx
-import { pluckSelected } from '@munza/mui-data-grid';
+import { pluckSelected } from 'munza-mui-data-grid';
 
 const { rowSelection } = useGridState();
 
