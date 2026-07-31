@@ -2,6 +2,8 @@
 
 A feature-rich, headless-powered data grid for React — built on [TanStack Table v8](https://tanstack.com/table) and [MUI](https://mui.com/). Sorting, filtering, pagination, row selection, column/row pinning, resizing, drag-and-drop column ordering, expandable rows, and split (frozen) columns — all out of the box.
 
+**Live Demo:** [https://munza-mui-data-grid.jsdevs.xyz/](https://munza-mui-data-grid.jsdevs.xyz/)
+
 ## Features
 
 - Global search + per-column filtering (text, range)
@@ -28,7 +30,7 @@ npm install @munza/mui-data-grid
 Make sure the following are installed in your project:
 
 ```bash
-npm install react react-dom @mui/material @emotion/react @emotion/styled @mui/icons-material @tanstack/react-table
+npm install react react-dom @mui/material @emotion/react @emotion/styled @mui/icons-material
 ```
 
 ## Quick Start
@@ -204,7 +206,6 @@ URLSearch({
 | `@mui/material`             | `^9.x`  |
 | `@mui/icons-material`       | `^9.x`  |
 | `@emotion/react` / `styled` | `^11.x` |
-| `@tanstack/react-table`     | `^8.x`  |
 
 ## License
 
