@@ -5,7 +5,6 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import { useGrid } from '../../contexts/GridContext';
-import TDataNotFound from './TDataNotFound';
 
 const TLeftNoData = () => {
   const { table } = useGrid();
@@ -30,9 +29,7 @@ const TLeftNoData = () => {
                 minWidth: column.getSize(),
                 maxWidth: column.getSize(),
               }}
-            >
-              <TDataNotFound />
-            </TableCell>
+            />
           ))}
         </TableRow>
       </TableBody>
