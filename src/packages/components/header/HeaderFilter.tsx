@@ -85,6 +85,15 @@ const HeaderFilter = <T,>({ column }: { column: Column<T, unknown> }) => {
             )
           }
           displayEmpty
+          sx={{
+            height: 28,
+            '& .MuiSelect-select': {
+              padding: '4px 8px',
+              fontSize: 13,
+              display: 'flex',
+              alignItems: 'center',
+            },
+          }}
         >
           <MenuItem value="">All</MenuItem>
           {selectValue.map((value) => {
